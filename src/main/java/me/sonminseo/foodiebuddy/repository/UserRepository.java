@@ -1,7 +1,7 @@
 package me.sonminseo.foodiebuddy.repository;
 
 
-import me.sonminseo.foodiebuddy.domain.User;
+import me.sonminseo.foodiebuddy.domain.user.domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

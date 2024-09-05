@@ -1,4 +1,4 @@
-package me.sonminseo.foodiebuddy.entity;
+package me.sonminseo.foodiebuddy.global;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;
