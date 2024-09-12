@@ -1,4 +1,4 @@
-package me.sonminseo.foodiebuddy.domain.chatflow.domain;
+package me.sonminseo.foodiebuddy.domain;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
