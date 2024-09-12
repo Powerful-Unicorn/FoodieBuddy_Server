@@ -1,20 +1,20 @@
-package me.sonminseo.foodiebuddy.domain;
+package me.sonminseo.foodiebuddy.entity;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.sql.Timestamp;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import java.util.List;
 
 
 @Table(name = "user")
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Getter
+//@NoArgsConstructor(access = AccessLevel.PROTECTED)
+//@Getter
 @Entity
 public class User {
 
@@ -36,4 +36,11 @@ public class User {
     private Timestamp createdAt;
 
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Chatflow> chatflows;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Menu> menus;
+
+    // getters and setters
 }
