@@ -23,7 +23,9 @@ public class UserService {
 
     public Ingredients receivedDr1(UserDr1RequestDto userDr1RequestDto) {
 
-        Restrictions restrictions = findRestrictionsByUserId(userDr1RequestDto.userId);
+        User user = findUserById(userDr1RequestDto.userId);
+
+        Restrictions restrictions = findRestrictionsByUserId(user);
         Ingredients ingredients = findIngredientsByUserId(userDr1RequestDto.userId);
 
         restrictions.updateRestrictions(userDr1RequestDto.getReligion(), userDr1RequestDto.getVegeterian());
@@ -40,8 +42,8 @@ public class UserService {
     }
 
     @Transactional(readOnly = true)
-    public Restrictions findRestrictionsByUserId(Long userId) {
-        return restrictionsRepository.findByUserUserId(userId);
+    public Restrictions findRestrictionsByUserId(User user) {
+        return restrictionsRepository.findByUser(user);
         // .orElseThrow(() -> new EntityNotFoundException("찾을 수 없습니다. userId= " + userId));
         //
 
