@@ -43,6 +43,7 @@ public class UserService {
     public Restrictions findRestrictionsByUserId(Long userId) {
         return restrictionsRepository.findByUserUserId(userId);
         // .orElseThrow(() -> new EntityNotFoundException("찾을 수 없습니다. userId= " + userId));
+        //
 
     }
 
