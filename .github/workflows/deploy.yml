@@ -22,6 +22,7 @@ jobs:
           cd ./src/main/resources 
           touch ./application.yml 
           echo "${{ secrets.APPLICATION }}" > ./application.yml
+          
       - name: Build with Gradle
         run: |
           cd src
@@ -30,7 +31,6 @@ jobs:
           ./gradlew build -x test
       # 위에까지가 빌드
       # 여기서부턴 도커 허브에 올리는거
-
 
 
 
