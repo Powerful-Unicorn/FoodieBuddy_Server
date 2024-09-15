@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import java.sql.Timestamp;
 import lombok.AccessLevel;
@@ -36,6 +37,12 @@ public class User {
     @Column(name = "created_at", updatable = false)
     private Timestamp createdAt;
 
+    @OneToOne(mappedBy = "user")
+    private Restrictions restrictions;
+
+    @OneToOne(mappedBy = "user")
+    private Ingredients ingredients;
+
 //
 //    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
 //    private List<Chatflow> chatflows;
@@ -45,6 +52,7 @@ public class User {
 
     @Builder
     public User(String email, String password, String username, Timestamp createdAt) {
+
         this.email = email;
         this.password = password;
         this.username = username;
