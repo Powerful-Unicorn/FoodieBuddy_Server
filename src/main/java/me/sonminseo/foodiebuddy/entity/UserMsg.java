@@ -11,7 +11,6 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import java.sql.Timestamp;
-import org.aspectj.weaver.patterns.TypePatternQuestions.Question;
 
 @Entity
 @Table(name = "user_msg")
@@ -32,7 +31,7 @@ public class UserMsg {
     private Chatflow chatflow;
 
     @OneToOne(mappedBy = "userMsg", cascade = CascadeType.ALL)
-    private Question question;
+    private ModelQuestion modelQuestion;
 
     // getters and setters
 }
