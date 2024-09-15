@@ -3,6 +3,7 @@ package me.sonminseo.foodiebuddy.service;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import me.sonminseo.foodiebuddy.dto.UserDr1RequestDto;
+import me.sonminseo.foodiebuddy.dto.UserSignUpRequestDto;
 import me.sonminseo.foodiebuddy.entity.Ingredients;
 import me.sonminseo.foodiebuddy.entity.Restrictions;
 import me.sonminseo.foodiebuddy.entity.User;
@@ -33,6 +34,15 @@ public class UserService {
 
         return ingredients;
     }
+
+    public Long signUp(UserSignUpRequestDto userSignUpRequestDto) {
+//        if (existsByEmail(requestDto.getEmail())) {
+//            throw new IllegalArgumentException("이미 존재하는 email입니다." + requestDto.getEmail());
+//        }
+        User user = userRepository.save(userSignUpRequestDto.toEntity());
+        return user.getUserId();
+    }
+
 
     @Transactional(readOnly = true)
     public User findUserById(Long userId) {
