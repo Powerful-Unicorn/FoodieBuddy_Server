@@ -1,15 +1,12 @@
 package me.sonminseo.foodiebuddy.entity;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.sql.Timestamp;
-import java.util.List;
 
 
 @Table(name = "user")
@@ -35,12 +32,12 @@ public class User {
     @Column(name = "created_at", updatable = false)
     private Timestamp createdAt;
 
-
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Chatflow> chatflows;
-
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Menu> menus;
+//
+//    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+//    private List<Chatflow> chatflows;
+//
+//    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+//    private List<Menu> menus;
 
     // getters and setters
 }
