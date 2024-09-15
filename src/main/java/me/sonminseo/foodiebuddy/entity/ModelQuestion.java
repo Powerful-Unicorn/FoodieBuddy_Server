@@ -25,7 +25,7 @@ public class ModelQuestion {
     @JoinColumn(name = "user_msg_id", nullable = false)
     private UserMsg userMsg;
 
-    @OneToOne(mappedBy = "question", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "question_id", cascade = CascadeType.ALL)
     private ModelAnswer modelAnswer;
 
     // getters and setters
