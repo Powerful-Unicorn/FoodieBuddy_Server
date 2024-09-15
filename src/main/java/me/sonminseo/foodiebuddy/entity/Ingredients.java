@@ -5,10 +5,14 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import java.sql.Timestamp;
+import lombok.Getter;
 
 @Entity
+@Getter
 @Table(name = "ingredients")
 public class Ingredients {
 
@@ -36,9 +40,9 @@ public class Ingredients {
 
     private String other;
 
-//    @ManyToOne
-//    @JoinColumn(name = "user_id", nullable = false)
-//    private User user;
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
     @Column(nullable = false)
     private Timestamp createdAt;
@@ -47,4 +51,23 @@ public class Ingredients {
     private Timestamp modifiedAt;
 
     // getters and setters
+
+
+    public void updateIngredients(String religion, String vegeterian) {
+
+        if (vegeterian.equals("pescatarian")) {
+            this.meat = "all kinds";
+            this.egg = false;
+            this.dairy = "";
+            this.seafood = "";
+            this.nuts = "";
+            this.gluten = false;
+            this.fruits = "";
+            this.vegetables = "";
+            this.other = "";
+
+        }
+
+
+    }
 }

@@ -6,5 +6,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface RestrictionsRepository extends JpaRepository<Restrictions, Long> {
 
+    Restrictions findByUserUserId(Long userId);
+
+
 }
 
