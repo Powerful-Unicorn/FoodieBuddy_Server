@@ -18,13 +18,13 @@ jobs:
 
       - name: make application.yml
         run: |
-          mkdir ./src/main/resources 
-          cd ./src/main/resources 
-          touch ./application.yml 
-          echo "${{ secrets.APPLICATION }}" > ./application.yml
+          mkdir foodiebuddy/src/main/resources 
+          cd foodiebuddy/src/main/resources 
+          touch foodiebuddy/application.yml 
+          echo "${{ secrets.APPLICATION }}" > foodiebuddy/application.yml
       - name: Build with Gradle
         run: |
-          cd .
+          cd foodiebuddy
           chmod +x ./gradlew
           ./gradlew build -x test
       # 위에까지가 빌드
