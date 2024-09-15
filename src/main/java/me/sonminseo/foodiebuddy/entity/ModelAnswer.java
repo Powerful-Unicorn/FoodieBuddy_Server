@@ -5,8 +5,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -20,9 +18,9 @@ public class ModelAnswer {
     @Column(nullable = false)
     private String content;
 
-    @OneToOne
-    @JoinColumn(name = "question_id", nullable = false)
-    private ModelQuestion modelQuestion;
+//    @OneToOne
+//    @JoinColumn(name = "question_id", nullable = false)
+//    private ModelQuestion modelQuestion;
 
     // getters and setters
 }

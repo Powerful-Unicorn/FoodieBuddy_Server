@@ -1,13 +1,10 @@
 package me.sonminseo.foodiebuddy.entity;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -21,12 +18,12 @@ public class ModelQuestion {
     @Column(nullable = false)
     private String content;
 
-    @OneToOne
-    @JoinColumn(name = "user_msg_id", nullable = false)
-    private UserMsg userMsg;
-
-    @OneToOne(mappedBy = "question_id", cascade = CascadeType.ALL)
-    private ModelAnswer modelAnswer;
+//    @OneToOne
+//    @JoinColumn(name = "user_msg_id", nullable = false)
+//    private UserMsg userMsg;
+//
+//    @OneToOne(mappedBy = "question_id", cascade = CascadeType.ALL)
+//    private ModelAnswer modelAnswer;
 
     // getters and setters
 }
