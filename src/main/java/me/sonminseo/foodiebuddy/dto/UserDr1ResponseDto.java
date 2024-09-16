@@ -45,18 +45,18 @@ public class UserDr1ResponseDto {
 
     }
 
-    public static UserDr1ResponseDto from(Ingredients ingredients) {
+    public static UserDr1ResponseDto from(Ingredients savedIngredients) {
 
         return new UserDr1ResponseDto(
-                ingredients.getMeat(),
-                ingredients.getEgg(),
-                ingredients.getDairy(),
-                ingredients.getSeafood(),
-                ingredients.getNuts(),
-                ingredients.getGluten(),
-                ingredients.getFruits(),
-                ingredients.getVegetables(),
-                ingredients.getOther()
+                savedIngredients.getMeat(),
+                savedIngredients.getEgg(),
+                savedIngredients.getDairy(),
+                savedIngredients.getSeafood(),
+                savedIngredients.getNuts(),
+                savedIngredients.getGluten(),
+                savedIngredients.getFruits(),
+                savedIngredients.getVegetables(),
+                savedIngredients.getOther()
         );
     }
 

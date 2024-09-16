@@ -11,11 +11,15 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 import java.sql.Timestamp;
+import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Getter
 @Table(name = "ingredients")
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Ingredients {
 
     @Id
@@ -57,7 +61,8 @@ public class Ingredients {
     // getters and setters
 
 
-    public void updateIngredients(String religion, String vegeterian) {
+    @Builder
+    public Ingredients(User user, String religion, String vegeterian) {
 
         if (vegeterian.equals("pescatarian")) {
             this.meat = "all kinds";
@@ -72,6 +77,23 @@ public class Ingredients {
 
         }
 
-
     }
+
+//    public Ingredients updateIngredients(String religion, String vegeterian) {
+//
+//        if (vegeterian.equals("pescatarian")) {
+//            this.meat = "all kinds";
+//            this.egg = false;
+//            this.dairy = "";
+//            this.seafood = "";
+//            this.nuts = "";
+//            this.gluten = false;
+//            this.fruits = "";
+//            this.vegetables = "";
+//            this.other = "";
+//
+//        }
+//
+//
+//    }
 }

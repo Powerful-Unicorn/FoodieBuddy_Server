@@ -11,9 +11,15 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 import java.sql.Timestamp;
+import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Entity
+@Getter
 @Table(name = "restrictions")
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Restrictions {
 
     @Id
@@ -37,10 +43,26 @@ public class Restrictions {
 
     // getters and setters
 
+    @Builder
+    public Restrictions(User user, String religion, String vegetarian) {
+        this.user = user;
+        this.religion = religion;
+        this.vegetarian = vegetarian;
+
+    }
 
     public void updateRestrictions(String religion, String vegeterian) {
         this.religion = religion;
         this.vegetarian = vegeterian;
+
+    }
+
+    public Ingredients toIngredientsEntity(User user) {
+        return Ingredients.builder()
+                .user(user)
+                .religion(religion)
+                .vegeterian(vegetarian)
+                .build();
 
     }
 }
