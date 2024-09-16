@@ -66,7 +66,10 @@ public class Ingredients {
     @Builder
     public Ingredients(User user, String religion, String vegeterian) {
 
+        this.user = user;
+
         if (vegeterian.equals("pescatarian")) {
+
             this.meat = "all kinds";
             this.egg = false;
             this.dairy = "";

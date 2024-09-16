@@ -17,7 +17,9 @@ public class RestrictionsService {
 
     private final UserService userService;
 
+    @Transactional
     public Restrictions saveRestrictions(UserDr1RequestDto userDr1RequestDto) {
+        
         User user = userService.findUserById(userDr1RequestDto.userId);
         Restrictions restrictions = userDr1RequestDto.toEntity(user);
         Restrictions savedRestriction = restrictionsRepository.save(restrictions);
