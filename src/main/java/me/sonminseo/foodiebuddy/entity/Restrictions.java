@@ -30,10 +30,12 @@ public class Restrictions {
 
     private String vegetarian;
 
-    @Column(nullable = false)
+    //    @Column(nullable = false)
+    @Column
     private Timestamp createdAt;
 
-    @Column(nullable = false)
+    //    @Column(nullable = false)
+    @Column
     private Timestamp modifiedAt;
 
     @OneToOne(fetch = FetchType.LAZY)
