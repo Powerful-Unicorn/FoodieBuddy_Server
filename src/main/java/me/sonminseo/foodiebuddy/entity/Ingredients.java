@@ -52,10 +52,12 @@ public class Ingredients {
     private User user;
 
 
-    @Column(nullable = false)
+    //    @Column(nullable = false)
+    @Column
     private Timestamp createdAt;
 
-    @Column(nullable = false)
+    //    @Column(nullable = false)
+    @Column
     private Timestamp modifiedAt;
 
     // getters and setters
