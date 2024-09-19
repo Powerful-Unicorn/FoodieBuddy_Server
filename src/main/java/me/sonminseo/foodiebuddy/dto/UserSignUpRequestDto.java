@@ -14,13 +14,13 @@ public class UserSignUpRequestDto {
 
     private String email;
     private String password;
-    private String username;
+//    private String username;
 
     @Builder
-    public UserSignUpRequestDto(String email, String password, String username) {
+    public UserSignUpRequestDto(String email, String password) {
         this.email = email;
         this.password = password;
-        this.username = username;
+//        this.username = username;
     }
 
 
@@ -28,7 +28,7 @@ public class UserSignUpRequestDto {
         return User.builder()
                 .email(this.email)
                 .password(this.password)
-                .username(this.username)
+//                .username(this.username)
                 .build();
     }
 }
