@@ -5,9 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-import java.sql.Timestamp;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -19,7 +17,6 @@ import lombok.NoArgsConstructor;
 @Getter
 @Entity
 public class User {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id", updatable = false)
@@ -34,35 +31,56 @@ public class User {
     @Column(name = "username", nullable = false)
     private String username;
 
-    @Column(name = "created_at", updatable = false)
-    private Timestamp createdAt;
+    @Column(name = "religion")
+    private String religion;
 
-    @OneToOne(mappedBy = "user")
-    private Restrictions restrictions;
+    @Column(name = "vegetarian")
+    private String vegetarian;
 
-    @OneToOne(mappedBy = "user")
-    private Ingredients ingredients;
+    @Column(name = "meat")
+    private String meat;
 
-//
-//    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-//    private List<Chatflow> chatflows;
-//
-//    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-//    private List<Menu> menus;
+    @Column(name = "egg")
+    private Boolean egg;
+
+    @Column(name = "dairy")
+    private String dairy;
+
+    @Column(name = "seafood")
+    private String seafood;
+
+    @Column(name = "nut")
+    private String nut;
+
+    @Column(name = "gluten")
+    private Boolean gluten;
+
+    @Column(name = "fruit")
+    private String fruit;
+
+    @Column(name = "vegetable")
+    private String vegetable;
+
+    @Column(name = "other")
+    private String other;
+
 
     @Builder
-    public User(String email, String password, String username, Timestamp createdAt) {
-
+    public User(String email, String password, String username, String religion, String vegetarian) {
         this.email = email;
         this.password = password;
         this.username = username;
-        this.createdAt = createdAt;
+
+        this.religion = religion;
+        this.vegetarian = vegetarian;
+
 
     }
-//
-//    public void updateUser(Long userId, String religion, String vegeterian) {
-//        Ingredients ingredients = findIngredientsByUserId(userId);
-//        ingredients.updateIngredients(religion, vegeterian);
+
+//    @Builder
+//    public User(String religion, String vegetarian) {
 //
 //    }
+
+
 }

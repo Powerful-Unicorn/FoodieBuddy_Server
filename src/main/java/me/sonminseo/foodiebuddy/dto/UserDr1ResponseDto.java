@@ -3,7 +3,7 @@ package me.sonminseo.foodiebuddy.dto;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import me.sonminseo.foodiebuddy.entity.Ingredients;
+import me.sonminseo.foodiebuddy.entity.User;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -45,18 +45,18 @@ public class UserDr1ResponseDto {
 
     }
 
-    public static UserDr1ResponseDto from(Ingredients savedIngredients) {
+    public static UserDr1ResponseDto from(User user) {
 
         return new UserDr1ResponseDto(
-                savedIngredients.getMeat(),
-                savedIngredients.getEgg(),
-                savedIngredients.getDairy(),
-                savedIngredients.getSeafood(),
-                savedIngredients.getNuts(),
-                savedIngredients.getGluten(),
-                savedIngredients.getFruits(),
-                savedIngredients.getVegetables(),
-                savedIngredients.getOther()
+                user.getMeat(),
+                user.getEgg(),
+                user.getDairy(),
+                user.getSeafood(),
+                user.getNut(),
+                user.getGluten(),
+                user.getFruit(),
+                user.getVegetable(),
+                user.getOther()
         );
     }
 
