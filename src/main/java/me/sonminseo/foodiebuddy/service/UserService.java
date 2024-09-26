@@ -15,14 +15,13 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserService {
     private final UserRepository userRepository;
 
-
+    /*신규 유저 추가*/
     public Long signUp(UserSignUpRequestDto userSignUpRequestDto) {
-
         User user = userRepository.save(userSignUpRequestDto.toEntity());
         return user.getUserId();
     }
 
-
+    /*pk로 유저 찾기*/
     @Transactional(readOnly = true)
     public User findUserById(Long userId) {
         return userRepository.findById(userId)
@@ -30,27 +29,39 @@ public class UserService {
 
     }
 
-    public User saveRestrictions(UserDr1RequestDto userDr1RequestDto) {
-        User user = userRepository.save(userDr1RequestDto.toEntity());
 
-        return user;
+    /*식이제한 추가 1단계*/
+    public User saveRestrictions(UserDr1RequestDto userDr1RequestDto, User user) {
 
+        System.out.println(userDr1RequestDto.getVegetarian());
+
+        user.setReligion(userDr1RequestDto.getReligion());
+        user.setVegetarian(userDr1RequestDto.getVegetarian());
+
+        if (user.getVegetarian().equals("pescatarian")) {
+
+            user.setMeat("all kinds");
+            user.setEgg(false);
+            user.setDairy("");
+            user.setSeafood("");
+            user.setNut("");
+            user.setGluten(false);
+            user.setFruit("");
+            user.setVegetable("");
+            user.setOther("");
+
+        }
+
+//        System.out.println("religion: " + user.getReligion());
+//        System.out.println(user.getVegetarian());
+
+//        Optional<User> user = userRepository.findById(userDr1RequestDto.userId);
+//        User user = userRepository.save(userDr1RequestDto.toEntity());
+//        return user;
+        return userRepository.save(user);
     }
 
-//    @Transactional(readOnly = true)
-//    public Restrictions findRestrictionsByUser(User user) {
-//        return restrictionsRepository.findByUser(user);
-//        // .orElseThrow(() -> new EntityNotFoundException("찾을 수 없습니다. userId= " + userId));
-//        //
-//
-//    }
 
-//    @Transactional(readOnly = true)
-//    public Ingredients findIngredientsByUserId(Long userId) {
-//        return ingredientsRepository.findByUserUserId(userId);
-//        // .orElseThrow(() -> new EntityNotFoundException("찾을 수 없습니다. userId= " + userId));
-//
-//    }
 }
 
 

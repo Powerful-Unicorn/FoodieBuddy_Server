@@ -10,11 +10,13 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 
 @Table(name = "user")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
+@Setter
 @Entity
 public class User {
     @Id
@@ -34,7 +36,7 @@ public class User {
     @Column(name = "religion")
     private String religion;
 
-    @Column(name = "vegetarian")
+    @Column(name = "vegetarian", nullable = true)
     private String vegetarian;
 
     @Column(name = "meat")
@@ -66,13 +68,29 @@ public class User {
 
 
     @Builder
-    public User(String email, String password, String username, String religion, String vegetarian) {
+    public User(String email,
+                String password,
+                String username,
+                String religion,
+                String vegetarian,
+                String meat,
+                Boolean egg,
+                String dairy,
+                String seafood,
+                String nut,
+                Boolean gluten,
+                String fruit,
+                String vegetable,
+                String other) {
         this.email = email;
         this.password = password;
         this.username = username;
 
         this.religion = religion;
         this.vegetarian = vegetarian;
+
+        System.out.println("vegetarian");
+        System.out.println(vegetarian);
 
 
     }

@@ -11,7 +11,6 @@ import me.sonminseo.foodiebuddy.entity.User;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class UserSignUpRequestDto {
 
-
     private String email;
     private String password;
 //    private String username;
