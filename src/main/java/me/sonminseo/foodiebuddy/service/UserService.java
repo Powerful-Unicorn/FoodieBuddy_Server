@@ -31,10 +31,34 @@ public class UserService {
 
 
     /*식이제한 추가 1단계*/
-    public User saveRestrictions(UserDr1RequestDto userDr1RequestDto) {
-        User user = userRepository.save(userDr1RequestDto.toEntity());
-        return user;
+    public User saveRestrictions(UserDr1RequestDto userDr1RequestDto, User user) {
 
+        System.out.println(userDr1RequestDto.getVegetarian());
+
+        user.setReligion(userDr1RequestDto.getReligion());
+        user.setVegetarian(userDr1RequestDto.getVegetarian());
+
+        if (user.getVegetarian().equals("pescatarian")) {
+
+            user.setMeat("all kinds");
+            user.setEgg(false);
+            user.setDairy("");
+            user.setSeafood("");
+            user.setNut("");
+            user.setGluten(false);
+            user.setFruit("");
+            user.setVegetable("");
+            user.setOther("");
+
+        }
+
+//        System.out.println("religion: " + user.getReligion());
+//        System.out.println(user.getVegetarian());
+
+//        Optional<User> user = userRepository.findById(userDr1RequestDto.userId);
+//        User user = userRepository.save(userDr1RequestDto.toEntity());
+//        return user;
+        return userRepository.save(user);
     }
 
 
