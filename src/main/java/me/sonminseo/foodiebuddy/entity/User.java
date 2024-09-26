@@ -28,7 +28,7 @@ public class User {
     @Column(name = "password", nullable = false)
     private String password;
 
-    @Column(name = "username", nullable = false)
+    @Column(name = "username")
     private String username;
 
     @Column(name = "religion")
@@ -74,6 +74,19 @@ public class User {
         this.religion = religion;
         this.vegetarian = vegetarian;
 
+        if (vegetarian.equals("pescatarian")) {
+
+            this.meat = "all kinds";
+            this.egg = false;
+            this.dairy = "";
+            this.seafood = "";
+            this.nut = "";
+            this.gluten = false;
+            this.fruit = "";
+            this.vegetable = "";
+            this.other = "";
+            
+        }
 
     }
 

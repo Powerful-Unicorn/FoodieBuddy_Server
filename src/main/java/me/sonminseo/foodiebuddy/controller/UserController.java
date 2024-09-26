@@ -35,9 +35,7 @@ public class UserController {
     @PostMapping("/dr1")
     @ResponseStatus(value = HttpStatus.OK)
     public UserDr1ResponseDto userDr1ResponseDto(@RequestBody final UserDr1RequestDto userDr1RequestDto) {
-
         User user = userService.saveRestrictions(userDr1RequestDto);
-
         return UserDr1ResponseDto.from(user);
 
     }
