@@ -36,7 +36,11 @@ public class UserController {
     @ResponseStatus(value = HttpStatus.OK)
     public UserDr1ResponseDto userDr1ResponseDto(@RequestBody final UserDr1RequestDto userDr1RequestDto) {
 
-        User user = userService.saveRestrictions(userDr1RequestDto);
+        User findUser = userService.findUserById(userDr1RequestDto.userId);
+        User user = userService.saveRestrictions(userDr1RequestDto, findUser);
+
+        System.out.println(user.getUserId());
+        System.out.println(user.getVegetarian());
 
         return UserDr1ResponseDto.from(user);
 
