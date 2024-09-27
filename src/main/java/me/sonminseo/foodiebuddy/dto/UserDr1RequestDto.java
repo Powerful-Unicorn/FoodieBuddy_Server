@@ -5,17 +5,14 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import me.sonminseo.foodiebuddy.entity.User;
-import me.sonminseo.foodiebuddy.service.UserService;
 
 @Getter
-@NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class UserDr1RequestDto {
-
-    private UserService userService;
 
     private String religion;
     private String vegetarian;
-    public Long userId;
+    private Long userId;
 
     @Builder
     public UserDr1RequestDto(String religion, String vegetarian, Long userId) {
