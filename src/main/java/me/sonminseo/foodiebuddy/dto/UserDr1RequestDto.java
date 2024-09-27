@@ -4,7 +4,6 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import me.sonminseo.foodiebuddy.entity.Restrictions;
 import me.sonminseo.foodiebuddy.entity.User;
 
 @Getter
@@ -12,22 +11,40 @@ import me.sonminseo.foodiebuddy.entity.User;
 public class UserDr1RequestDto {
 
     private String religion;
-    private String vegeterian;
-    public Long userId;
+    private String vegetarian;
+    private Long userId;
 
     @Builder
-    public UserDr1RequestDto(String religion, String vegeterian, Long userId) {
+    public UserDr1RequestDto(String religion, String vegetarian, Long userId) {
         this.religion = religion;
-        this.vegeterian = vegeterian;
-        this.userId = userId;
-
+        this.vegetarian = vegetarian;
+//        this.userId = userId;
     }
 
-    public Restrictions toEntity(User user) {
-        return Restrictions.builder()
-                .user(user)
-                .religion(religion)
-                .vegetarian(vegeterian)
+    public User toEntity() {
+//        User user = userService.findUserById(userId);
+        System.out.println(User.builder());
+        return User.builder()
+//
+//                .email(user.getEmail())
+//                .password(user.getPassword())
+//                .username(user.getUsername())
+
+                .religion(this.religion)
+                .vegetarian(this.vegetarian)
+
+//                .meat(user.getMeat())
+
                 .build();
+
+
     }
+
+//    public User toEntity(User user) {
+//        return User.builder()
+//                .user(user)
+//                .religion(religion)
+//                .vegetarian(vegeterian)
+//                .build();
+//    }
 }
