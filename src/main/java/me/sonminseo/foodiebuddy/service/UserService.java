@@ -3,6 +3,7 @@ package me.sonminseo.foodiebuddy.service;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import me.sonminseo.foodiebuddy.dto.UserDr1RequestDto;
+import me.sonminseo.foodiebuddy.dto.UserDr2RequestDto;
 import me.sonminseo.foodiebuddy.dto.UserSignUpRequestDto;
 import me.sonminseo.foodiebuddy.entity.User;
 import me.sonminseo.foodiebuddy.repository.UserRepository;
@@ -51,17 +52,25 @@ public class UserService {
             user.setOther("");
 
         }
-
-//        System.out.println("religion: " + user.getReligion());
-//        System.out.println(user.getVegetarian());
-
-//        Optional<User> user = userRepository.findById(userDr1RequestDto.userId);
-//        User user = userRepository.save(userDr1RequestDto.toEntity());
-//        return user;
         return userRepository.save(user);
     }
 
 
+    public User saveIngredients(UserDr2RequestDto userDr2RequestDto, User user) {
+
+        user.setMeat(userDr2RequestDto.getMeat());
+        user.setEgg(userDr2RequestDto.getEgg());
+        user.setDairy(userDr2RequestDto.getDairy());
+        user.setSeafood(userDr2RequestDto.getSeafood());
+        user.setNut(userDr2RequestDto.getNut());
+        user.setGluten(userDr2RequestDto.getGluten());
+        user.setFruit(userDr2RequestDto.getFruit());
+        user.setVegetable(userDr2RequestDto.getVegetable());
+        user.setOther(userDr2RequestDto.getOther());
+
+        return userRepository.save(user);
+
+    }
 }
 
 
