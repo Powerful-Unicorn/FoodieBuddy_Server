@@ -39,7 +39,7 @@ public class UserService {
         user.setReligion(userDr1RequestDto.getReligion());
         user.setVegetarian(userDr1RequestDto.getVegetarian());
 
-        if (user.getVegetarian().equals("pescatarian")) {
+        if (user.getVegetarian().equalsIgnoreCase("pescatarian")) {
 
             user.setMeat("all kinds");
             user.setEgg(false);
