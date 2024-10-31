@@ -1,5 +1,7 @@
 package me.sonminseo.foodiebuddy.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import me.sonminseo.foodiebuddy.dto.UserDr1RequestDto;
 import me.sonminseo.foodiebuddy.dto.UserDr1ResponseDto;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/user")
 @RequiredArgsConstructor
+@Tag(name = "USER", description = "user와 관련된 API")
 public class UserController {
 
     private final UserService userService;
@@ -25,6 +28,7 @@ public class UserController {
 
     @PostMapping("/signup")
     @ResponseStatus(value = HttpStatus.CREATED)
+    @Operation(summary = "신규 유저 추가", description = "신규유저 추가 요청")
     public UserSignUpResponseDto userSignUpResponseDto(@RequestBody final UserSignUpRequestDto userSignUpRequestDto) {
         Long userId = userService.signUp(userSignUpRequestDto);
         User findUser = userService.findUserById(userId);
@@ -34,6 +38,7 @@ public class UserController {
     // 식이제한 입력 step1
     @PostMapping("/dr1")
     @ResponseStatus(value = HttpStatus.OK)
+    @Operation(summary = "식이제한 입력 step1", description = "종교 정보, 채식 정보 입력")
     public UserDr1ResponseDto userDr1ResponseDto(@RequestBody final UserDr1RequestDto userDr1RequestDto) {
 
         User user = userService.saveRestrictions(userDr1RequestDto);
