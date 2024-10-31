@@ -27,7 +27,6 @@ public class UserController {
     private final UserService userService;
 
     // 계정 생성
-
     @PostMapping("/signup")
     @ResponseStatus(value = HttpStatus.CREATED)
     @Operation(summary = "신규 유저 추가", description = "신규유저 추가 요청")
@@ -56,6 +55,7 @@ public class UserController {
     // 식이제한 입력 step2
     @PutMapping("/dr2")
     @ResponseStatus(value = HttpStatus.OK)
+    @Operation(summary = "식이제한 입력 step2", description = "섭취 불가능한 재료 정보 입력 (string: 섭취 불가한 재료 / boolean: 섭취 불가한 경우 true) ")
     public UserDr1ResponseDto userDr2ResponseDto(@RequestBody final UserDr2RequestDto userDr2RequestDto) {
         User findUser = userService.findUserById(userDr2RequestDto.getUserId());
         User user = userService.saveIngredients(userDr2RequestDto, findUser);
