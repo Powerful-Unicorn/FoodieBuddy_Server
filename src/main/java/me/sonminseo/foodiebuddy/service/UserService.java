@@ -2,6 +2,7 @@ package me.sonminseo.foodiebuddy.service;
 
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
+import me.sonminseo.foodiebuddy.controller.UserDrPutRequestDto;
 import me.sonminseo.foodiebuddy.dto.UserDr1RequestDto;
 import me.sonminseo.foodiebuddy.dto.UserDr2RequestDto;
 import me.sonminseo.foodiebuddy.dto.UserSignUpRequestDto;
@@ -56,6 +57,7 @@ public class UserService {
     }
 
 
+    /*식이제한 추가 1단계*/
     public User saveIngredients(UserDr2RequestDto userDr2RequestDto, User user) {
 
         user.setMeat(userDr2RequestDto.getMeat());
@@ -71,6 +73,26 @@ public class UserService {
         return userRepository.save(user);
 
     }
+
+    public User updateRestrictionsAndIngredients(UserDrPutRequestDto userDrPutRequestDto, User user) {
+
+        user.setReligion(userDrPutRequestDto.getReligion());
+        user.setVegetarian(userDrPutRequestDto.getVegetarian());
+
+        user.setMeat(userDrPutRequestDto.getMeat());
+        user.setEgg(userDrPutRequestDto.getEgg());
+        user.setDairy(userDrPutRequestDto.getDairy());
+        user.setSeafood(userDrPutRequestDto.getSeafood());
+        user.setNut(userDrPutRequestDto.getNut());
+        user.setGluten(userDrPutRequestDto.getGluten());
+        user.setFruit(userDrPutRequestDto.getFruit());
+        user.setVegetable(userDrPutRequestDto.getVegetable());
+        user.setOther(userDrPutRequestDto.getOther());
+
+        return userRepository.save(user);
+
+    }
+
 }
 
 
