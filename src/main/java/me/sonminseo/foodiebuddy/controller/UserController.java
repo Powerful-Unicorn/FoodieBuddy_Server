@@ -6,11 +6,14 @@ import lombok.RequiredArgsConstructor;
 import me.sonminseo.foodiebuddy.dto.UserDr1RequestDto;
 import me.sonminseo.foodiebuddy.dto.UserDr1ResponseDto;
 import me.sonminseo.foodiebuddy.dto.UserDr2RequestDto;
+import me.sonminseo.foodiebuddy.dto.UserDrPutResponseDto;
 import me.sonminseo.foodiebuddy.dto.UserSignUpRequestDto;
 import me.sonminseo.foodiebuddy.dto.UserSignUpResponseDto;
 import me.sonminseo.foodiebuddy.entity.User;
 import me.sonminseo.foodiebuddy.service.UserService;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -62,5 +65,27 @@ public class UserController {
 
         return UserDr1ResponseDto.from(user);
 
+    }
+
+    // 식이제한 수정
+    @PutMapping("/dr")
+    @ResponseStatus(value = HttpStatus.OK)
+    @Operation(summary = "식이제한 수정", description = "종교 정보, 채식 정보, 섭취 불가능한 재료 정보 입력 (string: 섭취 불가한 재료 / boolean: 섭취 불가한 경우 true) ")
+    public UserDrPutResponseDto updateRestrictionsAndIngredients(
+            @RequestBody final UserDrPutRequestDto userDrPutRequestDto) {
+        User findUser = userService.findUserById(userDrPutRequestDto.getUserId());
+        User user = userService.updateRestrictionsAndIngredients(userDrPutRequestDto, findUser);
+
+        return UserDrPutResponseDto.from(user);
+
+    }
+
+    // 식이제한 조회
+    @GetMapping("/dr/{userId}")
+    @ResponseStatus(value = HttpStatus.OK)
+    @Operation(summary = "식이제한 조회", description = "userId로 해당 유저의 식이제한을 조회한다.")
+    public UserDrPutResponseDto getRestrictionsAndIngredients(@PathVariable("userId") Long userId) {
+        User currentUser = userService.findUserById(userId);
+        return UserDrPutResponseDto.from(currentUser);
     }
 }
