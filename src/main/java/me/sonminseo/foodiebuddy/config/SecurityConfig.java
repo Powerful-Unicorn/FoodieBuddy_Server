@@ -28,7 +28,7 @@ public class SecurityConfig {
         // configuration.setAllowedOrigins(Arrays.asList(..., "https://test.com"));
         configuration.setAllowedOrigins(Arrays.asList(
                 "http://localhost:3000", "https://example.vercel.app/",
-                "https://api.foodiebuddy.kro.kr/swagger-ui/index.html"));
+                "https://api.foodiebuddy.kro.kr/swagger-ui/index.html/"));
         configuration.setAllowedMethods(List.of("*"));
         configuration.setAllowedHeaders(List.of("*"));
         configuration.setAllowCredentials(true);
