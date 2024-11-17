@@ -5,7 +5,7 @@ import lombok.RequiredArgsConstructor;
 import me.sonminseo.foodiebuddy.controller.UserDrPutRequestDto;
 import me.sonminseo.foodiebuddy.dto.UserDr1RequestDto;
 import me.sonminseo.foodiebuddy.dto.UserDr2RequestDto;
-import me.sonminseo.foodiebuddy.dto.UserSignUpRequestDto;
+import me.sonminseo.foodiebuddy.dto.UserRequestDto;
 import me.sonminseo.foodiebuddy.entity.User;
 import me.sonminseo.foodiebuddy.repository.UserRepository;
 import org.springframework.stereotype.Service;
@@ -18,9 +18,21 @@ public class UserService {
     private final UserRepository userRepository;
 
     /*신규 유저 추가*/
-    public Long signUp(UserSignUpRequestDto userSignUpRequestDto) {
+    public Long signUp(UserRequestDto userSignUpRequestDto) {
         User user = userRepository.save(userSignUpRequestDto.toEntity());
         return user.getUserId();
+    }
+
+    /*유저 정보 조회*/
+    public User login(UserRequestDto userLoginRequestDto) {
+        User user = userRepository.findByEmail(userLoginRequestDto.getEmail())
+                .orElseThrow(() -> new EntityNotFoundException(
+                        "해당 email을 가진 User를 찾을 수 없습니다. email= " + userLoginRequestDto.getEmail()));
+        if (!user.getPassword().equals(userLoginRequestDto.getPassword())) {
+            System.out.println(userLoginRequestDto.getPassword());
+            throw new EntityNotFoundException("password를 다시 확인해주세요.");
+        }
+        return user;
     }
 
     /*pk로 유저 찾기*/

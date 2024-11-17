@@ -9,14 +9,14 @@ import me.sonminseo.foodiebuddy.entity.User;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class UserSignUpRequestDto {
+public class UserRequestDto {
 
     private String email;
     private String password;
 //    private String username;
 
     @Builder
-    public UserSignUpRequestDto(String email, String password) {
+    public UserRequestDto(String email, String password, String username) {
         this.email = email;
         this.password = password;
 //        this.username = username;

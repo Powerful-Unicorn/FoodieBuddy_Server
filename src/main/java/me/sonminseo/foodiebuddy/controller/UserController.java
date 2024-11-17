@@ -7,7 +7,8 @@ import me.sonminseo.foodiebuddy.dto.UserDr1RequestDto;
 import me.sonminseo.foodiebuddy.dto.UserDr1ResponseDto;
 import me.sonminseo.foodiebuddy.dto.UserDr2RequestDto;
 import me.sonminseo.foodiebuddy.dto.UserDrPutResponseDto;
-import me.sonminseo.foodiebuddy.dto.UserSignUpRequestDto;
+import me.sonminseo.foodiebuddy.dto.UserLoginResponseDto;
+import me.sonminseo.foodiebuddy.dto.UserRequestDto;
 import me.sonminseo.foodiebuddy.dto.UserSignUpResponseDto;
 import me.sonminseo.foodiebuddy.entity.User;
 import me.sonminseo.foodiebuddy.service.UserService;
@@ -33,10 +34,20 @@ public class UserController {
     @PostMapping("/signup")
     @ResponseStatus(value = HttpStatus.CREATED)
     @Operation(summary = "신규 유저 추가", description = "신규유저 추가 요청")
-    public UserSignUpResponseDto userSignUpResponseDto(@RequestBody final UserSignUpRequestDto userSignUpRequestDto) {
+    public UserSignUpResponseDto userSignUpResponseDto(@RequestBody final UserRequestDto userSignUpRequestDto) {
         Long userId = userService.signUp(userSignUpRequestDto);
         User findUser = userService.findUserById(userId);
         return UserSignUpResponseDto.from(findUser);
+    }
+
+
+    // 계정 조회
+    @GetMapping("/login")
+    @ResponseStatus(value = HttpStatus.OK)
+    @Operation(summary = "유저 정보 불러오기", description = "이메일, 비밀번호로 유저 정보 불러오기")
+    public UserLoginResponseDto userLoginResponseDto(@RequestBody final UserRequestDto userLoginRequestDto) {
+        User findUser = userService.login(userLoginRequestDto);
+        return UserLoginResponseDto.from(findUser);
     }
 
     // 식이제한 입력 step1
