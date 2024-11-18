@@ -1,4 +1,4 @@
-package me.sonminseo.foodiebuddy.controller;
+package me.sonminseo.foodiebuddy.dto.request;
 
 import lombok.Builder;
 import lombok.Getter;

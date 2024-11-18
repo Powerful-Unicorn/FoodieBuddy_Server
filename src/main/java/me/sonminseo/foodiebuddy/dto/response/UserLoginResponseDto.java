@@ -1,4 +1,4 @@
-package me.sonminseo.foodiebuddy.dto;
+package me.sonminseo.foodiebuddy.dto.response;
 
 import lombok.AccessLevel;
 import lombok.Getter;

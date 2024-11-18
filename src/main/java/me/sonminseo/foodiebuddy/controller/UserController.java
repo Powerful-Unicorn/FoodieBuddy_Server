@@ -3,24 +3,18 @@ package me.sonminseo.foodiebuddy.controller;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
-import me.sonminseo.foodiebuddy.dto.UserDr1RequestDto;
-import me.sonminseo.foodiebuddy.dto.UserDr1ResponseDto;
-import me.sonminseo.foodiebuddy.dto.UserDr2RequestDto;
-import me.sonminseo.foodiebuddy.dto.UserDrPutResponseDto;
-import me.sonminseo.foodiebuddy.dto.UserLoginResponseDto;
-import me.sonminseo.foodiebuddy.dto.UserRequestDto;
-import me.sonminseo.foodiebuddy.dto.UserSignUpResponseDto;
+import me.sonminseo.foodiebuddy.dto.request.UserDr1RequestDto;
+import me.sonminseo.foodiebuddy.dto.request.UserDr2RequestDto;
+import me.sonminseo.foodiebuddy.dto.request.UserDrPutRequestDto;
+import me.sonminseo.foodiebuddy.dto.request.UserRequestDto;
+import me.sonminseo.foodiebuddy.dto.response.UserDr1ResponseDto;
+import me.sonminseo.foodiebuddy.dto.response.UserDrPutResponseDto;
+import me.sonminseo.foodiebuddy.dto.response.UserLoginResponseDto;
+import me.sonminseo.foodiebuddy.dto.response.UserSignUpResponseDto;
 import me.sonminseo.foodiebuddy.entity.User;
 import me.sonminseo.foodiebuddy.service.UserService;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/user")
