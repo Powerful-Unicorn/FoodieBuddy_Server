@@ -1,14 +1,14 @@
 package me.sonminseo.foodiebuddy.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
-@Entity
 @Table(name = "menu")
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Entity
+@Getter
 public class Menu {
 
     @Id
@@ -27,9 +27,37 @@ public class Menu {
     @Column(nullable = false)
     private Boolean isBookmarked;
 
-//    @ManyToOne
-//    @JoinColumn(name = "user_id", nullable = false)
-//    private User user;
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
-    // getters and setters
+    public Menu updateBookmark() {
+        Boolean tmp = this.isBookmarked;
+        tmp = !tmp;
+        this.isBookmarked = tmp;
+
+        return this;
+    }
+
+    public Menu updateStar(int star) {
+        this.star = star;
+        return this;
+    }
+
+
+//    @Builder
+//    public Menu(String name,
+//                String pronunciation,
+//                int star,
+//                Boolean isBookmarked,
+//                User user) {
+//        this.name = name;
+//        this.pronunciation = pronunciation;
+//        this.star = star;
+//
+//        this.isBookmarked = isBookmarked;
+//        this.user = user;
+//
+//    }
 }
+
