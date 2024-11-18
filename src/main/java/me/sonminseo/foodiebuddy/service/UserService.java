@@ -2,10 +2,10 @@ package me.sonminseo.foodiebuddy.service;
 
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
-import me.sonminseo.foodiebuddy.controller.UserDrPutRequestDto;
-import me.sonminseo.foodiebuddy.dto.UserDr1RequestDto;
-import me.sonminseo.foodiebuddy.dto.UserDr2RequestDto;
-import me.sonminseo.foodiebuddy.dto.UserRequestDto;
+import me.sonminseo.foodiebuddy.dto.request.UserDr1RequestDto;
+import me.sonminseo.foodiebuddy.dto.request.UserDr2RequestDto;
+import me.sonminseo.foodiebuddy.dto.request.UserDrPutRequestDto;
+import me.sonminseo.foodiebuddy.dto.request.UserRequestDto;
 import me.sonminseo.foodiebuddy.entity.User;
 import me.sonminseo.foodiebuddy.repository.UserRepository;
 import org.springframework.stereotype.Service;
