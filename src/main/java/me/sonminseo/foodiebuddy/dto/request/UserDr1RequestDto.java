@@ -18,33 +18,16 @@ public class UserDr1RequestDto {
     public UserDr1RequestDto(String religion, String vegetarian, Long userId) {
         this.religion = religion;
         this.vegetarian = vegetarian;
-//        this.userId = userId;
     }
 
     public User toEntity() {
-//        User user = userService.findUserById(userId);
         System.out.println(User.builder());
         return User.builder()
-//
-//                .email(user.getEmail())
-//                .password(user.getPassword())
-//                .username(user.getUsername())
-
                 .religion(this.religion)
                 .vegetarian(this.vegetarian)
-
-//                .meat(user.getMeat())
-
                 .build();
 
 
     }
 
-//    public User toEntity(User user) {
-//        return User.builder()
-//                .user(user)
-//                .religion(religion)
-//                .vegetarian(vegeterian)
-//                .build();
-//    }
 }
