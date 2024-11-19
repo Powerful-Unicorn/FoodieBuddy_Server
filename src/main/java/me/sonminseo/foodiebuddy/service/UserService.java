@@ -30,7 +30,7 @@ public class UserService {
                         "해당 email을 가진 User를 찾을 수 없습니다. email= " + userLoginRequestDto.getEmail()));
         if (!user.getPassword().equals(userLoginRequestDto.getPassword())) {
             System.out.println(userLoginRequestDto.getPassword());
-            throw new EntityNotFoundException("password를 다시 확인해주세요.");
+            throw new EntityNotFoundException("password를 다시 확인해주세요."); //
         }
         return user;
     }
