@@ -36,7 +36,7 @@ public class UserController {
 
 
     // 계정 조회
-    @GetMapping("/login")
+    @PostMapping("/login")
     @ResponseStatus(value = HttpStatus.OK)
     @Operation(summary = "유저 정보 불러오기", description = "이메일, 비밀번호로 유저 정보 불러오기")
     public UserLoginResponseDto userLoginResponseDto(@RequestBody final UserRequestDto userLoginRequestDto) {
