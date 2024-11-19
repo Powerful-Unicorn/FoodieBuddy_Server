@@ -55,6 +55,19 @@ public class UserService {
         user.setReligion(userDr1RequestDto.getReligion());
         user.setVegetarian(userDr1RequestDto.getVegetarian());
 
+        if (user.getVegetarian().equalsIgnoreCase("pollotarian")) {
+
+            user.setMeat("red meat(beef, pork)");
+            user.setEgg(false);
+            user.setDairy("");
+            user.setSeafood("");
+            user.setNut("");
+            user.setGluten(false);
+            user.setFruit("");
+            user.setVegetable("");
+            user.setOther("");
+
+        }
         if (user.getVegetarian().equalsIgnoreCase("pescatarian")) {
 
             user.setMeat("all kinds");
@@ -68,7 +81,80 @@ public class UserService {
             user.setOther("");
 
         }
+        if (user.getVegetarian().equalsIgnoreCase("lacto-ovo")) {
+
+            user.setMeat("all kinds");
+            user.setEgg(false);
+            user.setDairy("");
+            user.setSeafood("all kinds");
+            user.setNut("");
+            user.setGluten(false);
+            user.setFruit("");
+            user.setVegetable("");
+            user.setOther("");
+
+        }
+        if (user.getVegetarian().equalsIgnoreCase("ovo")) {
+
+            user.setMeat("all kinds");
+            user.setEgg(false);
+            user.setDairy("all kinds");
+            user.setSeafood("all kinds");
+            user.setNut("");
+            user.setGluten(false);
+            user.setFruit("");
+            user.setVegetable("");
+            user.setOther("");
+
+        }
+        if (user.getVegetarian().equalsIgnoreCase("lacto")) {
+
+            user.setMeat("all kinds");
+            user.setEgg(true);
+            user.setDairy("");
+            user.setSeafood("all kinds");
+            user.setNut("");
+            user.setGluten(false);
+            user.setFruit("");
+            user.setVegetable("");
+            user.setOther("");
+
+        }
+        if (user.getVegetarian().equalsIgnoreCase("vegan")) {
+
+            user.setMeat("all kinds");
+            user.setEgg(true);
+            user.setDairy("all kinds");
+            user.setSeafood("all kinds");
+            user.setNut("");
+            user.setGluten(false);
+            user.setFruit("");
+            user.setVegetable("");
+            user.setOther("");
+
+        }
+
+        if (user.getReligion().equalsIgnoreCase("hindu")) {
+
+            user.setMeat("all kinds");
+            user.setEgg(true);
+            user.setSeafood("all kinds");
+            user.setVegetable("onion, garlic");
+            user.setOther("alcoholic beverage");
+
+        }
+        if (user.getReligion().equalsIgnoreCase("buddist")) {
+
+            user.setMeat("all kinds");
+            user.setEgg(true);
+            user.setSeafood("all kinds");
+            user.setVegetable("onion, garlic, green onion, chive(buchu)");
+            user.setOther("alcoholic beverage");
+
+        }
+
         return userRepository.save(user);
+
     }
 
 

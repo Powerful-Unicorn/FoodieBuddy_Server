@@ -42,9 +42,9 @@ public enum ErrorCode {
 //    MEMBER_INACTIVE(404, 3001, "이미 계정을 삭제한 멤버입니다."),
 //
 //    // Server (3100 ~ 3199)
-    WRONG_PASSWORD(404, 3100, "계정의 비밀번호가 틀렸습니다."),
-    WRONG_EMAIL(404, 3101, "존재하지 않는 계정입니다."),
-    ALREADY_JOINED_USER(409, 3102, "이미 가입된 계정입니다.");
+    WRONG_PASSWORD(404, 3100, "Wrong Password"),
+    WRONG_EMAIL(404, 3101, "There's no account with given email"),
+    ALREADY_JOINED_USER(409, 3102, "Account with given email already exists.");
 //    DELEGATION_REQUIRED(409, 3102, "해당 요청 처리를 위해서는 서버장 권한을 위임해야 합니다."),
 //    SERVER_MEMBER_NOT_FOUND(404, 3150, "해당 서버에 사용자가 존재하지 않습니다."),
 //    SERVER_OWNER_NOT_FOUND(404, 3151, "서버 주인을 찾을 수 없습니다."),
