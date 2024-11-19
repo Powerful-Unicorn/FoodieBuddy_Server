@@ -19,6 +19,9 @@ public class UserService {
 
     /*신규 유저 추가*/
     public Long signUp(UserRequestDto userSignUpRequestDto) {
+        userRepository.findByEmail(userSignUpRequestDto.getEmail())
+                .orElseThrow(() -> new EntityNotFoundException(
+                        "이미 가입된 email 입니다. email= " + userSignUpRequestDto.getEmail()));
         User user = userRepository.save(userSignUpRequestDto.toEntity());
         return user.getUserId();
     }
