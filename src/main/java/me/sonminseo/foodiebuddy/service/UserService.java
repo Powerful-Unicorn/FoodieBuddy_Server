@@ -7,6 +7,8 @@ import me.sonminseo.foodiebuddy.dto.request.UserDr2RequestDto;
 import me.sonminseo.foodiebuddy.dto.request.UserDrPutRequestDto;
 import me.sonminseo.foodiebuddy.dto.request.UserRequestDto;
 import me.sonminseo.foodiebuddy.entity.User;
+import me.sonminseo.foodiebuddy.exception.CustomException;
+import me.sonminseo.foodiebuddy.exception.ErrorCode;
 import me.sonminseo.foodiebuddy.repository.UserRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,9 +21,9 @@ public class UserService {
 
     /*신규 유저 추가*/
     public Long signUp(UserRequestDto userSignUpRequestDto) {
-        userRepository.findByEmail(userSignUpRequestDto.getEmail())
-                .orElseThrow(() -> new EntityNotFoundException(
-                        "이미 가입된 email 입니다. email= " + userSignUpRequestDto.getEmail()));
+        if (userRepository.findByEmail(userSignUpRequestDto.getEmail()).isPresent()) {
+            throw new CustomException(ErrorCode.ALREADY_JOINED_USER);
+        }
         User user = userRepository.save(userSignUpRequestDto.toEntity());
         return user.getUserId();
     }
@@ -29,13 +31,11 @@ public class UserService {
     /*유저 정보 조회*/
     public User login(UserRequestDto userLoginRequestDto) {
         User user = userRepository.findByEmail(userLoginRequestDto.getEmail())
-                .orElseThrow(() -> new EntityNotFoundException(
-                        "해당 email을 가진 User를 찾을 수 없습니다. email= " + userLoginRequestDto.getEmail()));
+                .orElseThrow(() -> new CustomException(ErrorCode.WRONG_EMAIL));
         if (!user.getPassword().equals(userLoginRequestDto.getPassword())) {
             System.out.println(userLoginRequestDto.getPassword());
-            throw new EntityNotFoundException("password를 다시 확인해주세요."); //
-        }
-        return user;
+            throw new CustomException(ErrorCode.WRONG_PASSWORD);
+        } else return user;
     }
 
     /*pk로 유저 찾기*/
