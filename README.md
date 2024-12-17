@@ -23,7 +23,7 @@
 #### 💻 로컬 환경에서  API 서버 실행 방법
 1. Git clone 을 통한 스프링 부트 프로젝트 생성<br><br>
    ```
-   
+   https://github.com/Powerful-Unicorn/FoodieBuddy_Server.git
    ```
 2. application.yml 설정<br><br>
    ```
